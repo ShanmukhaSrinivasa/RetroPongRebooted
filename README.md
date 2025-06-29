@@ -1,9 +1,9 @@
-# Retro Pong Rebooted 🎮
+# Retro Pong Rebooted by Shanmukha🎮
 
-======================================
-      RETRO PONG REBOOTED - v1.0
-         Created by Shanmukha
-======================================
+<p align="center">
+  <img src="pong_game_preview.jpg" alt="Pong Game Preview" width="800"/>
+</p>
+
 
 A simple and fun remake of the classic Pong game using **C++** and **raylib**.
 
