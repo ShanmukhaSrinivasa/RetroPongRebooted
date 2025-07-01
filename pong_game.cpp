@@ -1,4 +1,6 @@
 #include <raylib.h>
+#include <deque>
+#include <vector>
 
 
 int player1_score = 0;
@@ -24,10 +26,22 @@ class Ball
     float speed_y;
     int radius;
     Color color = BLUE;
+    std::deque<Vector2> trail;
+    std::size_t trail_length = 15; // Length of the trail
 
     void draw()
     {
-        DrawCircle(x, y, radius, color);
+        
+        // Draw the trail
+        for(std::size_t i = 0; i < trail.size(); i++)
+        {
+            float alpha = (float)(i) / trail.size(); //Add trail effects
+            Color trailColor = Color{color.r, color.g, color.b, (unsigned char)(alpha * 180)};
+            DrawCircleV(trail[i], radius * 0.7, trailColor); // Draw smaller circles for the trail
+            
+        }
+        
+        DrawCircle(x, y, radius, color); //Drawing the main ball
     }
 
     void update()
@@ -63,6 +77,13 @@ class Ball
             resetball();
         }
 
+        //Add the current position to the trail
+        trail.push_back({x,y});
+        if(trail.size() > trail_length)
+        {
+            trail.pop_front();
+        }
+
     }
     
     void resetball()
@@ -76,6 +97,8 @@ class Ball
         speed_y *= speed_choices[GetRandomValue(0,1)];
 
         color = BLUE;
+
+        trail.clear(); // Clear the trail when the ball is reset
     }
 
 };
