@@ -403,7 +403,7 @@ int main()
             DrawText(TextFormat("%i", player2_score), 3 * screen_width/4 - 20, 20, 80, BLUE);
             DrawLine(screen_width/2, 0, screen_width/2, screen_height, BLUE);
 
-            int uiFontSize = 15;
+            int uiFontSize = 30;
             const char * uiTextP = "Press P for Pause";
             const char * uiTextR = "Press R for Restart";
             int uiTextPWidth = MeasureText(uiTextP, uiFontSize);
